@@ -20,14 +20,14 @@ df["year"] = df["checkin_time"].dt.year
 df["month"] = df["checkin_time"].dt.month
 df["day"] = df["checkin_time"].dt.day
 
-print(df)
+# print(df)
 
 import plotly.express as px
 
 # duration stats
-df["duration"].aggregate(['min', 'max', 'mean', 'sum'])
+print(df["duration"].aggregate(['min', 'max', 'mean', 'sum']))
 
-# duration by date``
+# duration by date
 fig = px.line(df, x='date', y='duration_hours', title="Visit durations", labels={'duration_hours': "Duration (hour)"})
 fig.write_image("duration_by_date.png")
 fig.write_html("duration_by_date.html")
