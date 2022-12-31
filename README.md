@@ -8,8 +8,6 @@ Parse data from Camp5 membership page and put into graph. Data taken from one of
 
 ## Example Result
 
-### Visit Duration stats
-
 ```
 min              0 days 01:20:14
 max              0 days 08:11:08
