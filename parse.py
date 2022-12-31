@@ -25,16 +25,24 @@ df["day"] = df["checkin_time"].dt.day
 import plotly.express as px
 
 # duration stats
-print(df["duration"].aggregate(['min', 'max', 'mean', 'sum']))
+print(df["duration"].aggregate(["min", "max", "mean", "sum"]))
 
 # duration by date
-fig = px.line(df, x='date', y='duration_hours', title="Visit durations", labels={'duration_hours': "Duration (hour)"})
+fig = px.line(
+    df,
+    x="date",
+    y="duration_hours",
+    title="Visit durations",
+    labels={"duration_hours": "Duration (hour)"},
+)
 fig.write_image("duration_by_date.png")
 fig.write_html("duration_by_date.html")
 
 # no. of visits by location
 visits = df.groupby(["year", "month", "location"])["checkin_time"].count().reset_index()
 visits.rename(columns={"checkin_time": "count"}, inplace=True)
-fig = px.bar(visits, 'month', 'count', color="location", title="Number of visits by month")
+fig = px.bar(
+    visits, "month", "count", color="location", title="Number of visits by month"
+)
 fig.write_image("visits_by_location.png")
 fig.write_html("visits_by_location.html")
